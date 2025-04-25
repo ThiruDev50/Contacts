@@ -1,0 +1,44 @@
+.outer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactRibbon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBoxContainer {
+    width: 600px;
+}
+
+.spacer {
+    width: 20px;
+}
+
+.searchInput {
+    height: 27px;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    color: var(--app-text-white-color);
+    border-color: var(--colors-gray-dark-200);
+    box-shadow: 0 0 5px var(--colors-gray-dark-200);
+    background-color: var(--colors-gray-dark-900) !important;
+
+    &:hover {
+        border-color: #888;
+    }
+
+    &::placeholder {
+        color: #aaa;
+        font-style: italic;
+    }
+}

@@ -18,13 +18,14 @@
   --app-text-white-color: #EDEDED;
   --app-text-grey-color: #7E7E7E;
   --app-block-bg-color: #1C1C1C;
-  --app-green-color: #37996B;
+  --app-green-color: #37996b;
+  --app-green-colaor: #4d4a4a;
 }
 
 html,
 body {
   height: 98%;
-  background-color: var(--colors-gray-dark-200);
+  background-color: var(--colors-gray-dark-500);
   min-height: 700px;
   min-width: 1200px;
   margin: 0;

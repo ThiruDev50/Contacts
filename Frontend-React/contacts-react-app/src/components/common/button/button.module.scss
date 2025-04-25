@@ -1,0 +1,30 @@
+.customButton {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:hover {
+      background-color: var(--hoverBgColor);
+      color: var(--hoverTextColor);
+      border-color: var(--hoverBorderColor);
+    }
+  
+    &:active {
+      transform: scale(0.98);
+    }
+  
+    &:disabled {
+      background-color: #f0f0f0;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
