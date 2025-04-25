@@ -1,0 +1,26 @@
+-------------------------
+List contacts
+CRUD - Validations Must
+    - Create new contact
+        - Within popup 
+    - Read new contact
+        - Can fetch paginated one
+    - Update contacts
+        - Can able to update only within popup
+    - Delete contact
+        - Can able to delete from popup or outer
+
+Can search contact from backend
+Implement Pagination
+------------------------------
+APIs
+    - Get Contacts (GET)
+        - Query params
+            Search 
+            Paginated 
+            Sort
+    - Update Contact (PUT)
+    - Create Contact (POST)
+    - Delete Contact (DELETE)
+
+-------------------------------------------
