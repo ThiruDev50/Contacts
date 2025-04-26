@@ -1,0 +1,61 @@
+
+
+.popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    color: var(--app-text-white-color);
+  }
+  
+  .popup {
+    background-color: var(--colors-gray-dark-600);
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    margin: 0 0 8px;
+  }
+  
+  .header p {
+    margin: 0;
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .cancelButton {
+    background-color: #f87171;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .okButton {
+    background-color: #34d399;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

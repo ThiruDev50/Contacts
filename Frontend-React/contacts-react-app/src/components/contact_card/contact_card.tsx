@@ -42,7 +42,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
         }, 1500);
     };
 
-    const formattedPhone = `${contact.countryCode} ${contact.phone}`;
+    const formattedPhone = `${contact.countryName} ${contact.countryCode}-${contact.phone}`;
     const fullName = `${contact.firstName} ${contact.lastName}`;
     const initials = `${contact.firstName.charAt(0)}${contact.lastName.charAt(0)}`.toUpperCase();
 

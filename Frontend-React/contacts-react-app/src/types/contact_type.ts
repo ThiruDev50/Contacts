@@ -4,8 +4,9 @@ export type ContactType = {
     lastName: string;
     email: string;
     phone: string;
-    countryCode: string;
+    countryId: string;
     countryName: string;
+    countryCode: string;
     createdAt: Date;
     updatedAt: Date;
     address: string;
