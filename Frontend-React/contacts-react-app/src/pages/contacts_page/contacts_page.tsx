@@ -27,7 +27,7 @@ export function ContactsPage() {
     const appDispatch = useAppDispatch();
     const [currentContact, setCurrentContact] = useState<ContactType | undefined>(undefined);
     const contactsList = useAppSelector((state) => state.contactReducer.CONTACTS_LIST);
-    let isFirstRender=true;
+    let isFirstRender = true;
     const [searchFilterValue, setSearchFilterValue] = useState("");
 
     const handleCreateButtonClick = () => {
@@ -63,10 +63,10 @@ export function ContactsPage() {
         scrollToTop();
         setTimeout(() => {
             setFilteredContacts(sortedContacts);
-        }, 500)
+        }, 300)
 
     };
-    
+
     // Function to handle filter change
     const onFilterChange = (e: any) => {
         const searchTerm = e.target.value.toLowerCase();
@@ -90,7 +90,7 @@ export function ContactsPage() {
 
     useEffect(() => {
         if (isFirstRender) {
-            isFirstRender=false;
+            isFirstRender = false;
             getAllContacts();
         }
     }, []);
@@ -119,7 +119,7 @@ export function ContactsPage() {
             setShowSnackbar(true);
         }, 100)
     }
-    
+
     // Function to close the contact form
     function onContactFormClose() {
         setShowContactForm(false);
@@ -157,11 +157,11 @@ export function ContactsPage() {
         const createStatus = await AddContact(contact);
         setShowLoader(false);
         if (createStatus.success) {
-            showSnackbarTrigger("Contact created successfully", SnackbarType.SUCCESS);
+            showSnackbarTrigger("Contact created successfully!!", SnackbarType.WARNING);
             await getAllContacts();
         }
         else {
-            showSnackbarTrigger("Failed to create contact", SnackbarType.ERROR);
+            showSnackbarTrigger("Failed to create contact!!", SnackbarType.ERROR);
         }
     }
 
@@ -174,7 +174,7 @@ export function ContactsPage() {
         if (response.success) {
             appDispatch(setContactsList(response.data));
         } else {
-            showSnackbarTrigger("Failed to fetch contacts", SnackbarType.ERROR);
+            showSnackbarTrigger("Failed to fetch contacts!!", SnackbarType.ERROR);
         }
     }
 
@@ -184,11 +184,11 @@ export function ContactsPage() {
         const updateStatus = await UpdateContact(contact);
         setShowLoader(false);
         if (updateStatus.success) {
-            showSnackbarTrigger("Contact created successfully", SnackbarType.SUCCESS);
+            showSnackbarTrigger("Contact updated successfully!!", SnackbarType.WARNING);
             await getAllContacts();
         }
         else {
-            showSnackbarTrigger("Failed to create contact", SnackbarType.ERROR);
+            showSnackbarTrigger("Failed to update contact!!", SnackbarType.ERROR);
         }
     }
 
@@ -199,11 +199,11 @@ export function ContactsPage() {
         const deleteStatus = await DeleteContact(contactId);
         setShowLoader(false);
         if (deleteStatus.success) {
-            showSnackbarTrigger("Contact deleted successfully", SnackbarType.SUCCESS);
+            showSnackbarTrigger("Contact deleted successfully!!", SnackbarType.WARNING);
             await getAllContacts();
         }
         else {
-            showSnackbarTrigger("Failed to delete contact", SnackbarType.ERROR);
+            showSnackbarTrigger("Failed to delete contact!!", SnackbarType.ERROR);
         }
     }
 
@@ -253,7 +253,7 @@ export function ContactsPage() {
                         ))}
 
                     </div>
-                    {!isFirstRender && filteredContacts.length === 0 && <div className={styles.noContactsFound}>
+                    {filteredContacts.length === 0 && <div className={styles.noContactsFound}>
                         No contacts found
                     </div>}
                 </div>
