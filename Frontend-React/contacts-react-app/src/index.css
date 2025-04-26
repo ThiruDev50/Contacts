@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 :root {
   --app-primary-color: #00aced;
   --app-secondary-color: #0c1022;
@@ -30,9 +31,30 @@ body {
   min-width: 1200px;
   margin: 0;
   margin: 0.5%;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 ::selection {
   background-color: var(--app-green-color);
   color: var(--app-text-white-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1c1c31;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--app-text-grey-color);
+  border-radius: 4px;
+  border: 2px solid #1c1c31;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #34b17a;
 }

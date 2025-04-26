@@ -1,8 +1,5 @@
 .outer {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .contactRibbon {
@@ -25,13 +22,13 @@
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--colors-gray-dark-900);
     outline: none;
     transition: all 0.3s ease-in-out;
     color: var(--app-text-white-color);
     border-color: var(--colors-gray-dark-200);
     box-shadow: 0 0 5px var(--colors-gray-dark-200);
-    background-color: var(--colors-gray-dark-900) !important;
+    background-color: var(--colors-gray-dark-600) !important;
 
     &:hover {
         border-color: #888;
@@ -42,3 +39,23 @@
         font-style: italic;
     }
 }
+.contactsBlockOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+
+}
+.contactsBlock {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(320px, 1fr));
+    gap: 50px;
+    justify-items: center; /* Centers the items horizontally */
+    padding: 20px;
+  
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  

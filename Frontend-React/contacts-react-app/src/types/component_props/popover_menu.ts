@@ -8,4 +8,5 @@ export type PopoverMenuProps = {
   options: OptionType[];
   selected: OptionType;
   onSelect: (option: OptionType) => void;
+  showSelected?: boolean;
 };

@@ -1,11 +1,13 @@
 export type ContactType = {
     id: number;
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     phone: string;
+    countryCode: string;
+    countryName: string;
+    createdAt: Date;
+    updatedAt: Date;
     address: string;
-    company: string;
-    website: string;
-    createdAt: string;
-    updatedAt: string;
+    notes: string
 }

@@ -1,0 +1,233 @@
+
+.contactCard {
+    width: 450px;
+    height: 480px;
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 128, 96, 0.15);
+    overflow: hidden;
+    background-color: var(--colors-gray-dark-700);
+    color: #f1f5f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contactCard:hover {
+    cursor: pointer;
+   // transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 128, 96, 0.25);
+    border: 1px solid var(--app-text-white-color);
+  }
+  
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #1a2e22;
+    position: relative;
+    background-color: #0f7244;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #1d3b2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+  
+  .avatar span {
+    color: var(--app-text-white-color);
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .headerContent {
+    flex: 1;
+  }
+  
+  .contactName {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .contactId {
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: var(--app-text-white-color);
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .actionButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    padding: 0;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .editButton {
+    color: var(--app-text-white-color);
+  }
+  
+  .editButton:hover {
+    background-color: rgba(52, 211, 153, 0.15);
+  }
+  
+  .deleteButton {
+    color: var(--app-text-white-color);
+
+  }
+  
+  .deleteButton:hover {
+    background-color: rgba(248, 113, 113, 0.15);
+  }
+  
+  .cardBody {
+    padding: 16px;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a2e22;
+  }
+  
+  .contactInfo:last-of-type {
+    border-bottom: none;
+  }
+  
+  .infoLabel {
+    display: flex;
+    align-items: center;
+    color: var(--app-text-white-color);
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  
+  .infoLabel svg {
+    margin-right: 8px;
+    stroke: var(--app-text-white-color);
+  }
+  
+  .infoValue {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    color: #d1fae5;
+    padding: 4px 0;
+  }
+  
+  .truncateText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+  }
+  
+  .copyButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--app-text-white-color);
+    padding: 4px;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    flex-shrink: 0;
+  }
+  
+  .copyButton:hover {
+    color: #34d399;
+    background-color: rgba(52, 211, 153, 0.15);
+  }
+  
+  .copyButton svg {
+    stroke: currentColor;
+  }
+  
+  .notesSection {
+    margin-top: 16px;
+  }
+  
+  .notesLabel {
+    font-size: 13px;
+    color: var(--app-text-white-color);
+    margin-bottom: 6px;
+  }
+  
+  .notesContent {
+    font-size: 14px;
+    color: #d1fae5;
+    line-height: 1.5;
+    overflow: hidden;
+  }
+  
+  .notesContent p {
+    margin: 0;
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .cardFooter {
+    padding: 12px 16px;
+    background-color: #0f7244;
+    border-top: 1px solid #1a2e22;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--app-text-white-color);
+  }
+  
+  @media (max-width: 480px) {
+    .contactCard {
+      width: 100%;
+      height: auto;
+      min-height: 400px;
+    }
+  
+    .cardHeader {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .avatar {
+      margin-bottom: 12px;
+      margin-right: 0;
+    }
+  
+    .actionButtons {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+  }
+  
