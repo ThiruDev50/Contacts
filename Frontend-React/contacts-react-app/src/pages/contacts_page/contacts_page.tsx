@@ -27,7 +27,7 @@ export function ContactsPage() {
     const appDispatch = useAppDispatch();
     const [currentContact, setCurrentContact] = useState<ContactType | undefined>(undefined);
     const contactsList = useAppSelector((state) => state.contactReducer.CONTACTS_LIST);
-    const [isFirstRender, setIsFirstRender] = useState(true);
+    let isFirstRender=true;
     const [searchFilterValue, setSearchFilterValue] = useState("");
 
     const handleCreateButtonClick = () => {
@@ -90,7 +90,7 @@ export function ContactsPage() {
 
     useEffect(() => {
         if (isFirstRender) {
-            setIsFirstRender(false);
+            isFirstRender=false;
             getAllContacts();
         }
     }, []);
