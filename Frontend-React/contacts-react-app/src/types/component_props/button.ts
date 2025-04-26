@@ -28,8 +28,8 @@ export const ButtonStyles = {
 
 
 export interface ButtonProps {
-  label: string;
-  onClick: () => void;
-  type: ButtonType;
-  disabled?: boolean;
+    label: string;
+    onClick: () => void;
+    type: ButtonType;
+    disabled?: boolean;
 }

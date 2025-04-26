@@ -25,7 +25,9 @@ namespace App.Contacts.WebHost.Services
         /// </summary>
         public async Task<List<Contact>> GetAllAsync()
         {
-            return await _context.Contacts.ToListAsync();
+            return await _context.Contacts
+               .OrderBy(c => c.FirstName + " " + c.LastName)
+               .ToListAsync();
         }
 
         /// <summary>
@@ -41,6 +43,8 @@ namespace App.Contacts.WebHost.Services
         /// </summary>
         public async Task<int> AddAsync(Contact contact)
         {
+            contact.UpdatedAt = DateTime.Now;
+            contact.CreatedAt = DateTime.Now;
             await _context.Contacts.AddAsync(contact);
             await _context.SaveChangesAsync();
             return contact.Id;
@@ -51,6 +55,7 @@ namespace App.Contacts.WebHost.Services
         /// </summary>
         public async Task UpdateAsync(Contact contact)
         {
+            contact.UpdatedAt = DateTime.Now;
             _context.Contacts.Update(contact);
             await _context.SaveChangesAsync();
         }

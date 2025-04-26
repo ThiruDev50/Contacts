@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ContactType } from '../../types/contact_type';
 import styles from './contact_form.module.scss'
 import { Countries } from '../../constants/country_constants';
 import { OptionType } from '../../types/component_props/popover_menu';
@@ -9,36 +8,39 @@ import { ButtonType } from '../../types/component_props/button';
 import { ContactFormProps } from '../../types/component_props/contact_form';
 
 export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSubmit }) => {
-    const isUpdateMode = !!contact;
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        countryId: '',
-        countryCode: '',
-        countryName: '',
-        address: '',
-        notes: ''
-    });
-
-    const [errors, setErrors] = useState<Record<string, string>>({});
-    const [touched, setTouched] = useState<Record<string, boolean>>({});
     let initialCountryDropdown = {
         label: "India_(+91)",
         value: "+91",
     }
+    const isUpdateMode = !!contact;
     if (isUpdateMode) {
         const selectedCountry = Countries.find(
             (country) => country.countryId === contact?.countryId
         );
-        console.log("selectedCountry", contact, selectedCountry);
         initialCountryDropdown = {
             label: `${selectedCountry?.countryName}_(${selectedCountry?.countryCode})`,
             value: selectedCountry?.countryCode!,
         }
     }
+    const [formData, setFormData] = useState({
+        id: contact?.id || 0,
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        countryId: 'IN',
+        countryCode: '+91',
+        countryName: 'India',
+        address: '',
+        notes: '',
+        createdAt: new Date(),
+    });
+
+    const [errors, setErrors] = useState<Record<string, string>>({});
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
     const [selectedCountryOption, setSelectedCountryOption] = useState<OptionType>(initialCountryDropdown);
+
+
     useEffect(() => {
         // Save current scroll position
         const scrollY = window.scrollY;
@@ -56,9 +58,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
             window.scrollTo(0, scrollY);
         };
     }, []);
+
     useEffect(() => {
         if (contact) {
             setFormData({
+                id: contact.id,
                 firstName: contact.firstName,
                 lastName: contact.lastName,
                 email: contact.email,
@@ -67,11 +71,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
                 countryName: contact.countryName,
                 countryCode: contact.countryCode,
                 address: contact.address,
-                notes: contact.notes
+                notes: contact.notes,
+                createdAt: contact.createdAt,
             });
         }
     }, [contact]);
 
+    // Function to validate form data
     const validate = (data: typeof formData): Record<string, string> => {
         const newErrors: Record<string, string> = {};
 
@@ -92,12 +98,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
         return newErrors;
     };
 
+    // Function to handle input change event
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
         setTouched(prev => ({ ...prev, [name]: true }));
     };
 
+    // Function to handle input blur event
     const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name } = e.target;
         setTouched(prev => ({ ...prev, [name]: true }));
@@ -105,6 +113,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
         setErrors(validationErrors);
     };
 
+    // Function to handle form submission
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const validationErrors = validate(formData);
@@ -121,7 +130,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
         });
 
         if (Object.keys(validationErrors).length === 0) {
-            onSubmit(isUpdateMode, formData);
+            setTimeout(() => {
+                onSubmit(isUpdateMode, formData);
+            }, 100)
         }
     };
 
@@ -131,9 +142,25 @@ export const ContactForm: React.FC<ContactFormProps> = ({ contact, onClose, onSu
         value: country.countryCode,
     }));
 
+    // Function to handle country option selection
     const handleCountryOptionSelect = (option: OptionType) => {
         setSelectedCountryOption(option);
+        const selectedCountry = Countries.find((country) => country.countryCode === option.value);
+        if (selectedCountry) {
+            setFormData((prev) => {
+                const updated = {
+                    ...prev,
+                    countryId: selectedCountry.countryId,
+                    countryName: selectedCountry.countryName,
+                    countryCode: selectedCountry.countryCode,
+                };
+                return updated;
+            });
+            setTouched((prev) => ({ ...prev, countryId: true, countryName: true, countryCode: true }));
+        }
+
     };
+
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modalContent}>

@@ -7,6 +7,6 @@ export type SnackbarProps = {
 
 export enum SnackbarType {
     SUCCESS = 'success',
-    ERROR= 'error',
+    ERROR = 'error',
     WARNING = 'warning'
 }

@@ -17,7 +17,7 @@ export function PopoverMenu({ label, options, selected, onSelect, showSelected }
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
-    const handleSortOptionSelect = (option: OptionType) => {
+    const handleOptionSelect = (option: OptionType) => {
         onSelect(option);
     };
 
@@ -34,7 +34,7 @@ export function PopoverMenu({ label, options, selected, onSelect, showSelected }
                         <button
                             key={option.value}
                             onClick={() => {
-                                handleSortOptionSelect(option);
+                                handleOptionSelect(option);
                                 setOpen(false);
                             }}
                             className={styles.item}

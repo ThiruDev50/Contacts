@@ -16,7 +16,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
             '#8B5CF6',
             '#EC4899',
             '#F59E0B',
-           
+
             '#F472B6',
             '#FBBF24',
             '#60A5FA',
@@ -29,6 +29,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
 
     const avatarColor = React.useMemo(() => getRandomColor(), []);
 
+    // Function to handle copy action
     const handleCopy = (text: string, field: 'email' | 'phone' | 'address') => {
         // For phone, only copy the number without country code
         const textToCopy = field === 'phone' ? contact.phone : text;
@@ -36,7 +37,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
         navigator.clipboard.writeText(textToCopy);
         setCopyStatus({ ...copyStatus, [field]: true });
 
-        // Reset after 3 seconds
+        // Reset after 1.5 secoundds
         setTimeout(() => {
             setCopyStatus(prev => ({ ...prev, [field]: false }));
         }, 1500);
@@ -180,7 +181,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
             </div>
 
             <div className={styles.cardFooter}>
-                <span>Created: {contact.createdAt.toLocaleString('en-US', {
+                <span>Created: {new Date(contact.createdAt).toLocaleString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -189,7 +190,7 @@ export const ContactCard: React.FC<ContactCardProps> = ({ contact, onEdit, onDel
                     hour12: true,
                 })}</span>
                 <span>•</span>
-                <span>Updated: {contact.updatedAt.toLocaleString('en-US', {
+                <span>Updated: {new Date(contact.updatedAt).toLocaleString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',

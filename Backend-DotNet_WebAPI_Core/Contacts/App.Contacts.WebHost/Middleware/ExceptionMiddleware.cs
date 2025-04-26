@@ -20,6 +20,8 @@ namespace App.Contacts.WebHost.Middleware
         {
             try
             {
+                //To Simulate delay
+                await Task.Delay(500);
                 // Call the next middleware in the pipeline
                 await _next(context);
             }

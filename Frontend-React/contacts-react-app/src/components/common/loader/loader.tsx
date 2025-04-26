@@ -5,6 +5,7 @@ import { LoaderProps } from "../../../types/component_props/loader";
 const Loader: React.FC<LoaderProps> = ({ loading, size = "50px" }) => {
     if (!loading) return null;
 
+    // Just a simple loader
     return (
         <div className={styles.loaderContainer}>
             <div className={styles.loader} style={{ width: size, height: size }}></div>

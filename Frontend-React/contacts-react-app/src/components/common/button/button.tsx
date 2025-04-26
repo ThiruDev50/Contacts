@@ -31,7 +31,6 @@ const Button: React.FC<ButtonProps> = ({
             }}
             onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = btnStyle.hoverBgColor;
-                //e.currentTarget.style.color = btnStyle.hoverTextColor;
                 e.currentTarget.style.borderColor = btnStyle.hoverBorderColor;
             }}
             onMouseLeave={(e) => {

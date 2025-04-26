@@ -21,6 +21,16 @@ namespace App.Contacts.WebHost
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("ContactsDb"));
             builder.Services.AddScoped<IContactService,ContactService>();
+            var allowedOrigins = builder.Configuration.GetSection("CorsSettings:AllowedOrigins").Get<string[]>();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             var app = builder.Build();
             using (var scope = app.Services.CreateScope())
             {
@@ -38,7 +48,7 @@ namespace App.Contacts.WebHost
 
             app.UseAuthorization();
             app.UseMiddleware<ExceptionMiddleware>();
-
+            app.UseCors("AllowAll");
             app.MapControllers();
 
             app.Run();

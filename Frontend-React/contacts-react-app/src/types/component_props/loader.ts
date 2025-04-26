@@ -1,4 +1,4 @@
 export type LoaderProps = {
-  loading: boolean;  
-  size?: string;     
+  loading: boolean;
+  size?: string;
 };
