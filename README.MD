@@ -5,7 +5,7 @@ The backend uses **Entity Framework Core** with an **InMemory Database**, perfec
 
 ---
 
-## 🔥 Tech Stack
+## 🔥 Tech Stack Used
 
 | Layer    | Technology |
 |----------|------------|
